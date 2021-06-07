@@ -1,0 +1,33 @@
+# Singly-linked lists are already defined with this interface:
+# class ListNode(object):
+#   def __init__(self, x):
+#     self.value = x
+#     self.next = None
+#
+def printList(l):
+    if l:
+        if l.next:
+            print(l.value, end=', ')
+        else:
+            print(l.value, end='')
+        printList(l.next)
+        
+def printer(l):
+    print('[', end='')
+    printList(l)
+    print(']', end='')
+
+def removeKFromList(l, k):
+    c = l
+    while c:
+        if c.next and c.next.value == k:
+            c.next = c.next.next
+        else:
+            c = c.next
+    if l and l.value == k:
+        return l.next
+    else:
+        return l    
+    printer(l)
+    return l
+    
