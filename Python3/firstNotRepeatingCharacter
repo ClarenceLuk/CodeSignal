@@ -1,4 +1,13 @@
 #https://app.codesignal.com/interview-practice/task/uX5iLwhc6L5ckSyNC/description
+
+#This code is to check a list to find the first unique character on the list.
+#My original approach is to get a uniq set of character and then check to see which is the first to have a count of 1 on the list.
+#However python3's set() algorithm is unordered and can have unpredictable result.
+#So I had to go through every single uniq character and look for all the ones that counted 1
+#and then I went and checked to see which one had the lowest index.
+#and if there was no unique count I had a boolean that would help me decide whether I had a uniq count on my list or not
+#at the end I would return the unique character with the lowest index
+
 def firstNotRepeatingCharacter(s):
     b = set(s)
     uniq=False
