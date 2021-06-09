@@ -1,0 +1,11 @@
+#https://app.codesignal.com/interview-practice/task/uX5iLwhc6L5ckSyNC/description
+def firstNotRepeatingCharacter(s):
+    b = set(s)
+    uniq=False
+    index=sys.maxsize
+    for x in b:
+        if s.count(x) == 1:
+            uniq=True
+            if s.index(x) < index:
+                index = s.index(x)
+    return s[index] if uniq else '_'
