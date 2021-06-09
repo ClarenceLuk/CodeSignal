@@ -1,0 +1,18 @@
+#https://app.codesignal.com/interview-practice/task/5A8jwLGcEpTPyyjTB/description
+
+#So this code is to rotate the 2d array clockwise
+#The goal is to change columns to rows and rows to columns
+#To rotate the array clockwise I will have to grab the first index of from the last group to the first group and append it to the new array.
+#To make a 2d array in python I have to make a single array in python and then append an empty array to it
+#then fill the 2d array one column at a time.
+
+def rotateImage(a):
+    b=[]
+    print(a)
+    for i in range(len(a)):
+        print(i)
+        b.append([])
+        for j in range(len(a)):
+            b[i].append(a[len(a)-1-j][i])
+    print(b)
+    return b
