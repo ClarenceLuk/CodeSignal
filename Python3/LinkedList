@@ -4,6 +4,13 @@
 #     self.value = x
 #     self.next = None
 #
+
+#This code challenge is to remove a target number from a linked list.
+#So my approach is to remove the node from the list with the target value.
+#To do that I would take the previous node pointer and point to the next node.
+#I did not delete the first node immediately, but I think I can make this code more efficient by removing k as it comes up.
+#right now the code is about O(n) + O(1) I thought that is efficient enough, but I think I can make it shorter
+
 def printList(l):
     if l:
         if l.next:
