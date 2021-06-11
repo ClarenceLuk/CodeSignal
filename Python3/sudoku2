@@ -1,0 +1,54 @@
+#https://app.codesignal.com/interview-practice/task/SKZ45AF99NpbnvgTn/solutions
+
+#In this puzzle, the objective is to make sure not rows contain the same number, and no column contains the same number as well
+#Also the 3x3 grid also cannot have a duplicate number as well.
+#is to create 2 new arrays to organize the data for sorting and comparison.
+#I know I can check to see if there are duplicates in each row by comparing it to a set of numbers (1-9)
+#I can use the count() function for each row, but to use the same function for the columns as well I would need to organize the data of the columns as well.
+#Hence the 3 arrays.
+#I will use my previous code to rotate the array to create a second array.
+#Then create a new algorithm to organize the 3x3 arrays into another array. 
+#These 3x3 arrays do not have to be in order.
+#as long as the 3x3 arrays are organized into a row, they can be in any order, because the other arrays already cross checks for them.
+#Afterwards they will all be in rows of different orders for me to use the count function on all of them at once.
+#Time Complexity already O(n^2) , Space Complexity O(n)
+#Not the most efficient code, but this is a proof of concept.
+#there is a way to make this finite array O(1) time complexity and space complexity, and that is to hardcode all the checks for columns and rows, and 3x3 cells, into if statements, and wont require the creation of new arrays.
+
+#this is a new algorithm to organize 3x3 areas into a row
+def threeByThree(grid):
+    newGrid=[]
+    for i in range(9):
+        newGrid.append([])
+        for j in range(9):
+            newGrid[i].append(grid[j//3+i%3*3][j%3+(i//3)*3])
+    return newGrid
+
+#this is from the previous code challenge
+def rotategrid(a):
+    b=[]
+    for i in range(len(a)):
+        b.append([])
+        for j in range(len(a)):
+            b[i].append(a[len(a)-1-j][i])
+    return b
+
+def sudoku2(grid):
+    numSet=set(['1','2','3','4','5','6','7','8','9'])
+    grid2=rotategrid(grid)
+    grid3=threeByThree(grid)
+    print(grid)
+    print(grid2)
+    print(grid3)
+    for i in range(9):
+        for j in numSet:
+            #print(grid[i].count(j), end=':')
+            if grid[i].count(j) > 1:
+                return False
+            #print(grid2[i].count(j), end=':')
+            if grid2[i].count(j) > 1:
+                return False
+            #print(grid3[i].count(j), end=':')
+            if grid3[i].count(j) > 1:
+                return False
+    return True
